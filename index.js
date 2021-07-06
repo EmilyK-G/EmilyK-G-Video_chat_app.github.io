@@ -14,14 +14,14 @@ app.use(cors());
 const PORT = process.env.PORT || 5000;
 
 app.get('/', (req, res) => {
-	res.send('Running');
+	res.send('Server is running');
 });
 
 io.on("connection", (socket) => {
 	socket.emit("me", socket.id);
 
 	socket.on("disconnect", () => {
-		socket.broadcast.emit("callEnded")
+		socket.broadcast.emit("Callended, Goodbye!")
 	});
 
 	socket.on("callUser", ({ userToCall, signalData, from, name }) => {
