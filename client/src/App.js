@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     width: '600px',
-    border: '2px solid black',
+    border: 'none',
 
     [theme.breakpoints.down('xs')]: {
       width: '90%',

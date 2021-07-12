@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Grid, Typography, Paper, makeStyles } from '@material-ui/core';
+import './VideoPlayer.css';
 
 import { SocketContext } from '../../SocketContext';
 
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: '10px',
-    border: '2px solid black',
+    border: 'none',
     margin: '10px',
   },
 }));
