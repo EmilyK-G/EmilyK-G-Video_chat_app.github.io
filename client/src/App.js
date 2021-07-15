@@ -1,10 +1,14 @@
 import React from 'react';
-import { Typography, AppBar } from '@material-ui/core';
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import { ContextProvider } from './SocketContext';
+// import { Typography, AppBar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import VideoPlayer from './components/VideoPlayer/VideoPlayer.jsx';
-import Sidebar from './components/Sidebar/Sidebar.jsx';
-import Notifications from './components/Notifications/Notifications.jsx';
+import Navbar from './components/Navbar/Navbar.jsx';
+import Home from './components/Home/Home';
+import About from './components/About/About';
+import Footer from './components/Footer/Footer';
+
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -37,13 +41,18 @@ const App = () => {
 
   return (
     <div className={classes.wrapper}>
-      <AppBar className={classes.appBar} position="static" color="inherit">
-        <Typography variant="h2" align="center">Reya Video Chat</Typography>
-      </AppBar>
-      <VideoPlayer />
-      <Sidebar>
-        <Notifications />
-      </Sidebar>
+      <Router>
+        <Navbar />
+        <Route path="/" exact>
+          <ContextProvider>
+            <Home />
+          </ContextProvider>
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+      </Router>
+      <Footer />
     </div>
   );
 };

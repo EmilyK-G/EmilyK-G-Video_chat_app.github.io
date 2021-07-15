@@ -5,7 +5,7 @@ import { Assignment, Phone, PhoneDisabled } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import './Sidebar.css';
 
-import { SocketContext } from '../../SocketContext';
+import { SocketContext } from '../../../SocketContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
