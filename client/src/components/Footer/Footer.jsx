@@ -4,15 +4,15 @@ import './Footer.css';
 function Footer(){
 
     return(
-        <h1 className="Footer">
-            <footer class="footer navbar-inverse bg-dark" role="contentinfo">
-                <div class="container">
-                    <p>
-                    &copy; ReyA. Company
-                    </p>
-                </div>
-            </footer>
-        </h1>
+        
+        <footer className="bg-dark text-center">
+            <div className="text-center p-3">
+                <h6 className="text-white">
+                &copy; ReyA. Company
+                </h6>
+            </div>
+        </footer>
+        
     )
 }
 

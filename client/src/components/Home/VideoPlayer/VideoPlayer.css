@@ -1,0 +1,8 @@
+.videoSize {
+    width: 100%;
+    align-self: center;
+    }
+.videoBackground {
+    background-color: rgba(119, 121, 128, 0.644);
+    max-width: 936px;
+}

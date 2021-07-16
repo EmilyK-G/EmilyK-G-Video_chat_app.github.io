@@ -5,7 +5,7 @@ function Welcoming(){
 
     return(
         <h1 className="Welcoming">
-            Welcome to Reya VideoChat
+            Welcome to ReyA VideoChat
         </h1>
     )
 }

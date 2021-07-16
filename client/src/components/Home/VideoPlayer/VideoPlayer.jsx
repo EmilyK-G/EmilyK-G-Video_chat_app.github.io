@@ -1,52 +1,31 @@
 import React, { useContext } from 'react';
-import { Grid, Typography, Paper, makeStyles } from '@material-ui/core';
 import './VideoPlayer.css';
 
 import { SocketContext } from '../../../SocketContext';
 
-const useStyles = makeStyles((theme) => ({
-  video: {
-    width: '550px',
-    [theme.breakpoints.down('xs')]: {
-      width: '300px',
-    },
-  },
-  gridContainer: {
-    justifyContent: 'center',
-    [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column',
-    },
-  },
-  paper: {
-    padding: '10px',
-    border: 'none',
-    margin: '10px',
-  },
-}));
 
 const VideoPlayer = () => {
   const { name, callAccepted, myVideo, userVideo, callEnded, stream, call } = useContext(SocketContext);
-  const classes = useStyles();
 
   return (
-    <Grid container className={classes.gridContainer}>
+    <div className="container my-4  videoBackground">
       {stream && (
-        <Paper className={classes.paper}>
-          <Grid item xs={12} md={6}>
-            <Typography variant="h5" gutterBottom>{name || 'Name'}</Typography>
-            <video playsInline muted ref={myVideo} autoPlay className={classes.video} />
-          </Grid>
-        </Paper>
+        <div className="container">
+          <div>
+            <h4 className="text-light p-4">{name || 'Name'}</h4>
+            <video playsInline muted ref={myVideo} autoPlay className="videoSize  py-3 px-2" />
+          </div>
+        </div>
       )}
       {callAccepted && !callEnded && (
-        <Paper className={classes.paper}>
-          <Grid item xs={12} md={6}>
-            <Typography variant="h5" gutterBottom>{call.name || 'Name'}</Typography>
-            <video playsInline ref={userVideo} autoPlay className={classes.video} />
-          </Grid>
-        </Paper>
+        <div className="container videoBackground">
+          <div>
+            <h4>{call.name || 'Name'}</h4>
+            <video playsInline ref={userVideo} autoPlay className="videoSize" />
+          </div>
+        </div>
       )}
-    </Grid>
+    </div>
   );
 };
 
