@@ -1,3 +1,72 @@
 .sidebarBackground {
     background-color: rgba(119, 121, 128, 0.966);
+    max-width: 936px;
+}
+.borderBtn {
+    width: 150px;
+    height: 150px;
+    outline-style: initial;
+    border-radius: 50%;
+}
+.shrinkBtn.btnTransition {
+    background-color: rgba(2, 114, 2, 0.822);
+    border: none;
+    width: 100px;
+    height: 100px;
+    outline-style: initial;
+    border-radius: 50%;
+}
+.shrinkBtn:hover {
+    background-color: green;
+}
+.borderCircle {
+    background-color: rgba(0, 0, 0, 0.801);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.btnTransition {
+    transform: translatey(60px);
+    z-index: 1;
+}
+.content {
+    border: none;
+    text-align: center;
+    transition: all 1s ease;
+    transform:translateY(0);
+    margin-top: 0;
+    position: relative;
+    z-index: 99;
+}
+
+.MuiInputBase-input {
+    color: whitesmoke !important;
+}
+
+.expandCircle {
+    width: 400px;
+    height: 400px;
+    opacity: 1;
+    transform: translatey(60px);
+    z-index: 1;
+}
+
+.hideBackground {
+    background-color: transparent;
+}
+
+.closingBtn {
+    width: 20px;
+    height: 20px;
+    outline: none;
+    border-radius: 50%;
+}
+
+.closingDiv {
+    width: 20px;
+    height: 20px;
+}
+
+.fontSizeSmall {
+    font-size: 0.6em;
 }

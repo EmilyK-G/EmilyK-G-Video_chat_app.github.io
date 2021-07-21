@@ -1,0 +1,6 @@
+.borderBtnAnswer {
+    width: 75px;
+    height: 75px;
+    outline-style: initial;
+    border-radius: 50%;
+}

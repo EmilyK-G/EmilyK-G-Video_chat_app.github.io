@@ -1,7 +1,9 @@
 .videoSize {
     width: 100%;
-    align-self: center;
     }
+.inCallVideoSize {
+    width: 45%;
+}
 .videoBackground {
     background-color: rgba(119, 121, 128, 0.644);
     max-width: 936px;

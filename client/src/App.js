@@ -4,7 +4,7 @@ import { ContextProvider } from './SocketContext';
 
 import Navbar from './components/Navbar/Navbar.jsx';
 import Home from './components/Home/Home';
-import About from './components/About/About';
+import Meetings from './components/Meetings/Meetings';
 import Footer from './components/Footer/Footer';
 
 
@@ -19,8 +19,8 @@ const App = () => {
             <Home />
           </ContextProvider>
         </Route>
-        <Route path="/about">
-          <About />
+        <Route path="/your_meetings">
+          <Meetings />
         </Route>
       </Router>
       <Footer />

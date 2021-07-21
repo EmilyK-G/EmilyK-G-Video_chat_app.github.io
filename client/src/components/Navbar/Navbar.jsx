@@ -6,7 +6,7 @@ function Navbar() {
   return (
     <nav className="navbar bg-dark container">
       <h4><Link className="link" to="/">Home</Link></h4>
-      <h4><Link className="link" to="/about">About</Link></h4>
+      <h4><Link className="link" to="/your_meetings">Your meetings</Link></h4>
     </nav>
   );
 }
