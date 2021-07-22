@@ -10,43 +10,43 @@ const Sidebar = ({ children }) => {
   const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } = useContext(SocketContext);
   const [idToCall, setIdToCall] = useState('');
   const [clicked, setClicked] = useState(false);
-  //const [copied, setCopied] = useState(false);
 
 
   function postData(e){
     e.preventDefault();
     const newMeeting = {
       username: name,
-      id: me
+      meetingId: me
     }
     axios.post('http://localhost:5005/create', newMeeting)
   }
   return (
-    <div className="container  sidebarBackground">
+    <div className="container py-4 sidebarBackground">
         <form className="container my-1 py-4" noValidate autoComplete="off">
           <div className="container">
-            <div className="container">
-              <h5>Account Info</h5>
+            <h5>Account Info</h5>
+            <div className="d-inline-flex align-items-center">
               <h6><cite title="Meeting Id">Your Meeting Id: {me}</cite></h6>
-              <TextField className="text-light" label="Name" value={name} onChange={(e) => setName(e.target.value)} fullWidth />
               <CopyToClipboard text={me}>
-                <button type="button" className="mt-5 btn borderBtn btn-dark" fullWidth>
-                  <p>Copy Your ID</p>
+                <button type="button" className="mx-5 btn borderCopyBtn btn-dark">
+                  Copy
                 </button>
               </CopyToClipboard>
             </div>
-            <div className="container">
+            <div>
+              <TextField className="text-light" label="Name" value={name} onChange={(e) => setName(e.target.value)} />
+            </div>
+            <div className="d-flex justify-content-center">
               {callAccepted && !callEnded ? (
-                <button type="button" onClick={leaveCall} className="my-2 btn borderBtn btn-danger">  Hang Up</button>
+                <button type="button" onClick={leaveCall} className="my-2 btn borderBtn btn-danger">Hang Up</button>
               ) : (
-                <div className={"my-5 content borderCircle " + (clicked ? 'expandCircle' : 'hideBackground')}>
-                  { clicked &&
-                  <TextField label="ID to call" value={idToCall} onChange={(e) => setIdToCall(e.target.value)} fullWidth />}
-                  <div onClick={() => setClicked(true)}>
+                <div className={"my-5 d-flex flex-column content borderCircle " + (clicked ? 'expandCircle' : 'hideBackground')}>
+                  { clicked && <input type="text" placeholder="ID to call" aria-label="ID to call" value={idToCall} onChange={(e) => setIdToCall(e.target.value)} autoFocus className='contentTransform form-control align-self-center'/>}
+                  <div onClick={() => setClicked(true)} className={clicked && 'contentTransform'}>
                     <button type="button" onClick={clicked && function(e) {callUser(idToCall); postData(e)}} className={"btnTransition borderBtn btn btn-dark " + (clicked && "shrinkBtn")}>Call</button>
                   </div>
-                  <div className="closingDiv" onClick={() => setClicked(false)} >
-                    <button type="button" className={"btn closingBtn text-light " + (!clicked && 'invisible')}>x</button>
+                  <div className={'closingDiv' + (clicked && ' contentTransform')} onClick={() => setClicked(false)} >
+                    <button type="button" className={"btn closingBtn text-light" + (!clicked && 'invisible')}>x</button>
                   </div>
                 </div>
               )}
@@ -57,5 +57,6 @@ const Sidebar = ({ children }) => {
     </div>
   );
 };
+
 
 export default Sidebar;

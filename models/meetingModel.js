@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 
 const MeetingSchema = mongoose.Schema({
     username: {
-        type: String,
-        required: true
+        type: String
     },
     meeting: {
         type: Boolean,
@@ -13,7 +12,7 @@ const MeetingSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    id: {
+    meetingId: {
         type: String
     }
 })

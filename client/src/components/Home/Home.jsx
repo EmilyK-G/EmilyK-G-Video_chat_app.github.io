@@ -8,8 +8,10 @@ import Notifications from '../Notifications/Notifications';
 function Home(){
 
     return(
-        <div>
-            <Welcoming/>
+        <div className="container">
+            <div className="d-flex m-2 p-3">
+                <Welcoming/>
+            </div>
             <VideoPlayer />
             <Sidebar>
                 <Notifications />

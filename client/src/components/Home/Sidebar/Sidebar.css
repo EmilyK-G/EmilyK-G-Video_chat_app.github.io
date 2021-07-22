@@ -2,12 +2,23 @@
     background-color: rgba(119, 121, 128, 0.966);
     max-width: 936px;
 }
+.borderCopyBtn {
+    width: 50px;
+    height: 50px;
+    outline-style: initial;
+    border-radius: 50%;
+    font-size: 0.5em;
+    text-align: center;
+    box-shadow: 1px 1px 5px 0.5px #c5c5c5c2;
+}
 .borderBtn {
     width: 150px;
     height: 150px;
     outline-style: initial;
     border-radius: 50%;
+    box-shadow: 2px 2px 7px 1px #c5c5c5c2;
 }
+
 .shrinkBtn.btnTransition {
     background-color: rgba(2, 114, 2, 0.822);
     border: none;
@@ -24,6 +35,7 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
+    box-shadow: 2px 2px 7px 1px #c5c5c5c2;
 }
 .btnTransition {
     transform: translatey(60px);
@@ -33,21 +45,33 @@
     border: none;
     text-align: center;
     transition: all 1s ease;
-    transform:translateY(0);
     margin-top: 0;
     position: relative;
     z-index: 99;
 }
 
-.MuiInputBase-input {
+.contentTransform {
+    transition: all 1s ease;
+    transform: translateY(150px);
+}
+
+input {
+    background-color: transparent !important;
     color: whitesmoke !important;
+}
+
+input.form-control {
+    width: 80%;
+    border: none;
+    border-bottom: 0.5px solid rgba(245, 245, 245, 0.829);
+    border-radius: 0;
 }
 
 .expandCircle {
     width: 400px;
     height: 400px;
     opacity: 1;
-    transform: translatey(60px);
+    transform: translatey(20px);
     z-index: 1;
 }
 
@@ -60,6 +84,14 @@
     height: 20px;
     outline: none;
     border-radius: 50%;
+    color: rgb(0, 0, 0);
+    font-size: 1.5em;
+    transition: all 0.1s ease;
+}
+
+.closingBtn:hover {
+    color: rgb(148, 3, 3);
+    text-shadow: 1px 1px 4px 0px #c5c5c5c2;
 }
 
 .closingDiv {

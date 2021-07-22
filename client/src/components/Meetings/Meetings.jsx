@@ -4,41 +4,46 @@ import './Meetings.css';
 
 function Meetings(){
     const [meetings, setMeetings] = useState([{
-        id: '',
+        meetingId: '',
         username: '',
-        time: ''
+        time: '',
+        _id:''
     }]);
+    const [deleted, setDeleted] = useState(false);
 
     useEffect(() => {
-    fetch("/meetings").then(res => {
-            return res.json()
-    }).then(jsonRes => {
+    fetch("/meetings").then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+    }).then((jsonRes) => {
+            console.log(jsonRes);
             setMeetings(jsonRes);
-            
-        }).then( console.log(meetings));
-    },[]);
+        }).then(() => 
+            setDeleted(false)
+            ).catch((err) => console.log(err));
+    }, [deleted]);
     
     function deleteItem(id) {
         axios.delete('/delete/' + id);
+        console.log(`deleted item with id ${id}`)
     }
 
-    if (typeof meetings.id === 'undefined') {
-        return <div className="container p-3 meetingsBackground"><h4>You have 0 meetings</h4></div>
-    } else {
+    if (meetings.length >= 1) {
         return <div className="container m-3 p-3 meetingsBackground">
                 
                 <div> 
                     {meetings.map(meeting => 
-                        <div key={meeting.id}  className="container m-3 p-3 mapBackground">
+                        <div key={meeting._id}  className="container m-3 p-3 mapBackground">
                         <h3>{meeting.username}</h3>
                         <h4>{meeting.time}</h4>
-                        <button className="btn btn-danger" data-id={meeting.id} onClick={()=>deleteItem(meeting.id)}>Delete Meeting</button>
+                        <button {...deleted && 'disabled'} className="btn btn-danger" data-id={meeting._id} onClick={()=> {deleteItem(meeting._id); setDeleted(true)}}>Delete Meeting</button>
                         </div>
                         )} 
                 </div>
-                
-                    
             </div>
+    } else {
+        return <div className="container p-3 meetingsBackground"><h4>You have 0 meetings</h4></div>
     }
     
 }

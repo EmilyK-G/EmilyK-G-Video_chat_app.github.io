@@ -2,31 +2,31 @@ const express = require("express");
 const router = express.Router();
 const Meeting = require("../models/meetingModel");
 
-router.route("/create").post((req, res) => {
+
+router.route('/create').post((req, res) => {
     const username = req.body.username;
-    const id = req.body.id;
+    const meetingId = req.body.meetingId;
+    const time = req.body.time;
     const newMeeting = new Meeting({
         username,
-        id,
+        meetingId,
         time
     });
 
     newMeeting.save();
 });
 
-// router.route("/delete/:id").delete((req, res) => {
-//     const id = req.params.id;
+router.delete('/delete/:id', (req, res) => {
+    const id = req.params.id;
 
-//     Meeting.findOneAndDelete({ id: id }, (err, doc) => {
-//         if(!err) {
-//             console.log("Item deleted");
-//             console.log(id);
-//             console.log(doc);
-//         } else {
-//             console.log(err);
-//         }
-//     });
-// });
+    Meeting.findByIdAndDelete({_id: id}, (req, res, err) => {
+        if(!err) {
+            console.log('Item deleted');
+        } else {
+            console.log(err);
+        }
+    });
+})
 
 router.route("/meetings").get((req, res) => {
     Meeting.find()

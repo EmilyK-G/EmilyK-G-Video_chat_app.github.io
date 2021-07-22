@@ -9,12 +9,12 @@ const Notifications = () => {
   return (
     <div>
       {call.isReceivingCall && !callAccepted && (
-        <div className= "container">
+        <div className= "d-inline-flex align-items-center">
           <h1>{call.name ? call.name : "Someone"} is calling:</h1>
-          <button type="button" className="my-2 btn borderBtnAnswer btn-success"onClick={answerCall}>
+          <button type="button" className="m-2 btn borderBtnAnswer btn-success"onClick={answerCall}>
             Answer
           </button>
-          <button type="button" className="my-2 btn borderBtnAnswer btn-danger"onClick={rejectCall}>
+          <button type="button" className="m-2 btn borderBtnAnswer btn-danger"onClick={rejectCall}>
             Reject
           </button>
         </div>
