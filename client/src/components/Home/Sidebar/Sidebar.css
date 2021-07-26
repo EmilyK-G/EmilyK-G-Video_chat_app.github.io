@@ -1,15 +1,13 @@
-.sidebarBackground {
-    background-color: rgba(119, 121, 128, 0.966);
-    max-width: 936px;
-}
 .borderCopyBtn {
     width: 50px;
     height: 50px;
     outline-style: initial;
     border-radius: 50%;
-    font-size: 0.5em;
-    text-align: center;
     box-shadow: 1px 1px 5px 0.5px #c5c5c5c2;
+}
+.copyBtn{
+    font-size: 0.8em;
+    text-align: center;
 }
 .borderBtn {
     width: 150px;
@@ -55,16 +53,14 @@
     transform: translateY(150px);
 }
 
-input {
-    background-color: transparent !important;
-    color: whitesmoke !important;
-}
-
-input.form-control {
+input.form-control.contentTransform {
     width: 80%;
     border: none;
     border-bottom: 0.5px solid rgba(245, 245, 245, 0.829);
     border-radius: 0;
+    background-color: transparent;
+    color: whitesmoke;
+    text-align: center;
 }
 
 .expandCircle {
@@ -77,6 +73,7 @@ input.form-control {
 
 .hideBackground {
     background-color: transparent;
+    box-shadow: none;
 }
 
 .closingBtn {
@@ -101,4 +98,14 @@ input.form-control {
 
 .fontSizeSmall {
     font-size: 0.6em;
+}
+
+.reloadButton {
+    border-radius: 15px;
+}
+
+@media (min-width: 576px) {
+    .accountInfo {
+        font-size: 2em;
+    }
 }

@@ -2,9 +2,51 @@
     width: 100%;
     }
 .inCallVideoSize {
-    width: 45%;
+    width: 100%;
 }
 .videoBackground {
     background-color: rgba(119, 121, 128, 0.644);
-    max-width: 936px;
+}
+.videoContainerWidth {
+    max-width: 800px;
+}
+.videoPosition {
+    position: relative;
+    z-index: 100;
+}
+.namePosition {
+    position: absolute;
+    z-index: 150;
+}
+.nameBackground {
+    background-color: rgba(119, 121, 128, 0.883);
+}
+.nameInput {
+    color: whitesmoke;
+    text-align: center;
+}
+input.form-control.nameInput {
+    width: 150px;
+    height: 150px;
+    border: none;
+    border-bottom: 0.5px solid rgba(245, 245, 245, 0.829);
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.801);
+    color: whitesmoke;
+    z-index: 100;
+}
+.nameInputPosition {
+    position: absolute;
+}
+input.form-control.nameInput.shrinkNameInput {
+    width: 100px;
+    height: 100px;
+}
+
+@media (max-width: 575.98px) {
+    input.form-control.nameInput {
+        width: 100px;
+        height: 100px;
+    }
+
 }

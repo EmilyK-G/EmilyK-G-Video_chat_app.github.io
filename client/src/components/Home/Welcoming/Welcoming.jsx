@@ -4,7 +4,7 @@ import './Welcoming.css';
 function Welcoming(){
 
     return(
-        <h1 className="Welcoming">
+        <h1 className="Welcoming text-center">
             Welcome to ReyA VideoChat
         </h1>
     )

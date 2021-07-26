@@ -8,8 +8,8 @@ import Notifications from '../Notifications/Notifications';
 function Home(){
 
     return(
-        <div className="container">
-            <div className="d-flex m-2 p-3">
+        <div className="container homeBackground">
+            <div className="d-flex justify-content-center m-2 pt-5">
                 <Welcoming/>
             </div>
             <VideoPlayer />

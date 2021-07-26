@@ -9,11 +9,8 @@ const socket = io('http://localhost:5000');
 
 const ContextProvider = ({ children }) => {
   const [callAccepted, setCallAccepted] = useState(false);
-  const [callRejected, setCallRejected] = useState(false)
   const [callEnded, setCallEnded] = useState(false);
   const [stream, setStream] = useState();
-  const [videoOn, setVideoOn] = useState(true);
-  const [audioOn, setAudioOn] = useState(true);
   const [name, setName] = useState('');
   const [call, setCall] = useState({});
   const [me, setMe] = useState('');
@@ -22,8 +19,8 @@ const ContextProvider = ({ children }) => {
   const userVideo = useRef();
   const connectionRef = useRef();
   const constraints = {
-    'video': videoOn,
-    'audio': audioOn
+    'video': true,
+    'audio': true
   }
 
   useEffect(() => {
@@ -33,8 +30,8 @@ const ContextProvider = ({ children }) => {
         myVideo.current.srcObject = currentStream;
       })
 
-    socket.on('me', (id) => setMe(id));
-
+    socket.on('me', () => setMe(socket.id));
+      
     socket.on('callUser', ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
     });
@@ -99,7 +96,7 @@ const ContextProvider = ({ children }) => {
   };
 
   return (
-    <SocketContext.Provider value={{ call, callAccepted, myVideo, userVideo, stream, setStream, setVideoOn, videoOn, setAudioOn, audioOn, name, setName, callEnded, me, callUser, leaveCall, answerCall, rejectCall }}>
+    <SocketContext.Provider value={{ call, callAccepted, myVideo, userVideo, stream, setStream, name, setName, callEnded, me, callUser, leaveCall, answerCall, rejectCall }}>
       {children}
     </SocketContext.Provider>
   );

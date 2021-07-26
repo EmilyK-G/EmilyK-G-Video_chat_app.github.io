@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import { ContextProvider } from './SocketContext';
+import './App.css';
 
 import Navbar from './components/Navbar/Navbar.jsx';
 import Home from './components/Home/Home';
@@ -11,7 +12,7 @@ import Footer from './components/Footer/Footer';
 const App = () => {
 
   return (
-    <div className="container">
+    <div className="container appContainer">
       <Router>
         <Navbar />
         <Route path="/" exact>

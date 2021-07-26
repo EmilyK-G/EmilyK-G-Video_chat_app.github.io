@@ -3,4 +3,5 @@
     height: 75px;
     outline-style: initial;
     border-radius: 50%;
+    box-shadow: 2px 2px 7px 1px #c5c5c5c2;
 }

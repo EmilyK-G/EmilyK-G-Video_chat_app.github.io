@@ -1,3 +1,7 @@
 .Footer {
     color: white;
 }
+.footerPosition {
+    position: fixed;
+    margin-bottom: 0;
+}

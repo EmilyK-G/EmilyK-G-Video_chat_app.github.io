@@ -4,10 +4,12 @@ const Meeting = require("../models/meetingModel");
 
 
 router.route('/create').post((req, res) => {
-    const username = req.body.username;
-    const meetingId = req.body.meetingId;
-    const time = req.body.time;
+    const username = req.body.username; //from Sidebar.jsx
+    const meetingId = req.body.meetingId; //from Sidebar.jsx
+    const time = req.body.time; //from Sidebar.jsx
+    const meeting = req.body.meeting; //form Notifications.jsx
     const newMeeting = new Meeting({
+        meeting,
         username,
         meetingId,
         time

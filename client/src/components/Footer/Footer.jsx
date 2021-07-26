@@ -5,11 +5,9 @@ function Footer(){
 
     return(
         
-        <footer className="bg-dark text-center">
-            <div className="text-center p-3">
-                <h6 className="text-white">
-                &copy; ReyA. Company
-                </h6>
+        <footer className="bg-dark fixed-bottom footer">
+            <div className="container">
+                <span className="text-muted">&copy; ReyA. Company</span>
             </div>
         </footer>
         
