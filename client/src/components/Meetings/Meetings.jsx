@@ -32,14 +32,13 @@ function Meetings(){
 
     if (meetings.length >= 1) {
        
-        return <div className="container d-flex flex-wrap-reverse justify-content-around mt-2 p-3 meetingsBackground">
+        return <div className="container d-flex flex-wrap justify-content-around mt-2 p-3 meetingsBackground">
                     
                     {meetings.map(meeting => 
                         <div key={meeting._id}  className="d-inline-flex flex-column m-3 p-3 mapBackground">
                         <h3>{meeting.username}</h3>
-                        <h4>{dateFormat(meeting.time)}</h4>
-                        {meeting.meeting ? <h4>Call Accepted</h4> : <h4>Call Rejected</h4>}
-                        <button {...deleted && 'disabled'} className="btn btn-danger" data-id={meeting._id} onClick={()=> {deleteItem(meeting._id); setDeleted(true)}}>Delete Meeting</button>
+                        <h4>{dateFormat(meeting.time, "dddd, mmmm dS, yyyy, HH:MM TT")}</h4>
+                        <button className="btn btn-danger" onClick={()=> {deleteItem(meeting._id); setDeleted(true)}}>Delete Meeting</button>
                         </div>
                         )} 
              

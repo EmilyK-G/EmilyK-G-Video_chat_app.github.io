@@ -1,7 +1,7 @@
 import React, { useContext,} from 'react';
 import './VideoPlayer.css';
 
-import { SocketContext } from '../../../SocketContext';
+import { SocketContext } from '../../../SocketContext.jsx';
 
 
 const VideoPlayer = () => {
@@ -14,7 +14,7 @@ const VideoPlayer = () => {
           <h4 className="text-light p-2 p-sm-4 mt-sm-3 m-sm-2 nameBackground namePosition">{name || 'Name'}</h4>
           <video playsInline muted ref={myVideo} autoPlay className={"py-sm-3 px-md-2 px-0 videoPosition" + (callAccepted && !callEnded ? ' inCallVideoSize' : ' videoSize')} />
           <div className="d-flex justify-content-center">
-            <input type="text" placeholder="Your Name Here" aria-label="Name" value={name} onChange={(e) => setName(e.target.value)} autoFocus className={'form-control nameInput align-self-center nameInputPosition' + (callAccepted && !callEnded ? ' shrinkNameInput' : '')} maxlength="15"/>
+            <input type="text" placeholder="Your Name Here" aria-label="Name" value={name} onChange={(e) => setName(e.target.value)} autoFocus className={'form-control nameInput align-self-center nameInputPosition' + (callAccepted && !callEnded ? ' shrinkNameInput' : '')} maxLength="15"/>
           </div>
       </div>
       )}

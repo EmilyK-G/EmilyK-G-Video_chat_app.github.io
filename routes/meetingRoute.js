@@ -4,21 +4,20 @@ const Meeting = require("../models/meetingModel");
 
 
 router.route('/create').post((req, res) => {
+
     const username = req.body.username; //from Sidebar.jsx
     const meetingId = req.body.meetingId; //from Sidebar.jsx
     const time = req.body.time; //from Sidebar.jsx
-    const meeting = req.body.meeting; //form Notifications.jsx
     const newMeeting = new Meeting({
-        meeting,
         username,
         meetingId,
         time
     });
-
+    console.log("meeting posted");
     newMeeting.save();
 });
 
-router.delete('/delete/:id', (req, res) => {
+router.route('/delete/:id').delete((req, res) => {
     const id = req.params.id;
 
     Meeting.findByIdAndDelete({_id: id}, (req, res, err) => {
@@ -31,10 +30,8 @@ router.delete('/delete/:id', (req, res) => {
 })
 
 router.route("/meetings").get((req, res) => {
-    Meeting.find()
+    Meeting.find().sort( { time: -1 } )
         .then(foundMeetings => res.json(foundMeetings))
 })
 
 module.exports = router;
-
-//window.location.reload();

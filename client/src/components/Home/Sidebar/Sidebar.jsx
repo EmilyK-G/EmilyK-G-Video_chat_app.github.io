@@ -3,13 +3,13 @@ import axios from "axios";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import './Sidebar.css';
 
-import { SocketContext } from '../../../SocketContext';
+import { SocketContext } from '../../../SocketContext.jsx';
 
 const Sidebar = ({ children }) => {
   const { me, callAccepted, name, callEnded, leaveCall, callUser } = useContext(SocketContext);
   const [idToCall, setIdToCall] = useState('');
   const [clicked, setClicked] = useState(false);
-
+ 
   
   function postData(e){
     e.preventDefault();
@@ -18,13 +18,17 @@ const Sidebar = ({ children }) => {
       meetingId: me,
       time: new Date ().getTime()
     }
-    axios.post('http://localhost:5005/create', newMeeting)
+    axios.post('http://localhost:5005/create', newMeeting).then((response) => {
+      console.log(response);
+    }, (error) => {
+      console.log(error);
+    });
   }
     
   
   return (
     
-        <form className="d-flex flex-column align-items-center container-sm mt-2 pt-3 p-sm-5" noValidate autoComplete="off">
+        <form className="d-flex flex-column align-items-center container-sm my-4 pt-3 p-sm-5" noValidate autoComplete="off">
         
           {children}
           
@@ -43,13 +47,13 @@ const Sidebar = ({ children }) => {
               {callAccepted && !callEnded ? (
                 <button type="button" onClick={leaveCall} className="my-4 btn borderBtn btn-danger">Hang Up</button>
               ) : (
-                <div className={"my-5 d-flex flex-column content borderCircle " + (clicked ? 'expandCircle' : 'hideBackground')}>
-                  { clicked && <input type="text" placeholder="ID to call" aria-label="ID to call" value={idToCall} onChange={(e) => setIdToCall(e.target.value)} autoFocus className='contentTransform form-control align-self-center' maxlength="25"/>}
-                  <div onClick={() => setClicked(true)} className={clicked && 'contentTransform'}>
-                    <button type="button" onClick={clicked && function(e) {callUser(idToCall); postData(e)}} className={"btnTransition borderBtn btn btn-dark " + (clicked && "shrinkBtn")}>Call</button>
+                <div className={"mb-5 d-flex flex-column content borderCircle " + (clicked ? 'expandCircle' : 'hideBackground')}>
+                  { clicked && <input type="text" placeholder="ID to call" aria-label="ID to call" value={idToCall} onChange={(e) => setIdToCall(e.target.value)} autoFocus className='contentTransform form-control align-self-center' maxLength="25"/>}
+                  <div onClick={() => setClicked(true)} className={clicked ? 'contentTransform' : ''}>
+                    <button type="button" onClick={clicked ? function(e) {callUser(idToCall); postData(e)} : undefined } className={"btnTransition borderBtn btn btn-dark " + (clicked ? "shrinkBtn" : '')}>Call</button>
                   </div>
-                  <div className={'closingDiv' + (clicked && ' contentTransform')} onClick={() => setClicked(false)} >
-                    <button type="button" className={"btn closingBtn text-light" + (!clicked && 'invisible')}>x</button>
+                  <div className={'closingDiv' + (clicked ? ' contentTransform' : '')} onClick={() => setClicked(false)} >
+                    <button type="button" className={"btn closingBtn text-light" + (!clicked ? ' invisible' : '')}>x</button>
                   </div>
                 </div>
               )}

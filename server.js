@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://EmilyKG:Password@cluster0.9u4ps.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://EmilyKG:Password@cluster0.9u4ps.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.use("/", require("./routes/meetingRoute"));
 

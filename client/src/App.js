@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom";
-import { ContextProvider } from './SocketContext';
+import { ContextProvider } from './SocketContext.jsx';
 import './App.css';
 
 import Navbar from './components/Navbar/Navbar.jsx';
